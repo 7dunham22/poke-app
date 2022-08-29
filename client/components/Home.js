@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  * COMPONENT
  */
-export const Home = (props) => {
-  const { username } = props;
+export const Home = () => {
+  // const { username } = props;
 
   return (
     // <div>
@@ -22,10 +22,12 @@ export const Home = (props) => {
 /**
  * CONTAINER
  */
-const mapState = (state) => {
-  return {
-    username: state.auth.username,
-  };
-};
+// const mapState = (state) => {
+//   return {
+//     username: state.auth.username,
+//   };
+// };
 
-export default connect(mapState)(Home);
+// export default connect(mapState)(Home);
+
+export default Home;
