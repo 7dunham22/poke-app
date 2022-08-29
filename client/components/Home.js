@@ -1,26 +1,31 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  * COMPONENT
  */
-export const Home = props => {
-  const {username} = props
+export const Home = (props) => {
+  const { username } = props;
 
   return (
-    <div>
-      <h3>Welcome, {username}</h3>
-    </div>
-  )
-}
+    // <div>
+    //   <h1>Welcome, {username}</h1>
+    // </div>
+    <Card>
+      <Card.Body>WELCOME TO THE POKE APP</Card.Body>
+    </Card>
+  );
+};
 
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    username: state.auth.username
-  }
-}
+    username: state.auth.username,
+  };
+};
 
-export default connect(mapState)(Home)
+export default connect(mapState)(Home);
