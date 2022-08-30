@@ -9,32 +9,38 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
-  const [newPokemon, setNewPokemon] = useState('');
+  const [singleSelections, setSingleSelections] = useState([]);
   const pokemonNames = useSelector((state) => state.pokemon.names);
 
   useEffect(() => {
     dispatch(getNames());
   }, []);
 
-  const handleUpdate = (e) => {
-    setNewPokemon(e.target.value);
-  };
-
   const handleSubmit = () => {
-    dispatch(getPokemon(newPokemon));
-    setNewPokemon('');
+    dispatch(getPokemon(singleSelections[0]));
+    setSingleSelections([]);
   };
 
   return (
     <div id={styles.container}>
-      <Form.Control
+      {/* <Form.Control
         id={styles.searchbar}
         size="lg"
         type="text"
         placeholder="Search for a Pokemon"
         value={newPokemon}
         onChange={handleUpdate}
-      />
+      /> */}
+      <Form>
+        <Typeahead
+          id="basic-typeahead-single"
+          labelKey="name"
+          onChange={setSingleSelections}
+          options={pokemonNames}
+          placeholder="Search for a Pokemon"
+          selected={singleSelections}
+        />
+      </Form>
       <Button variant="primary" type="submit" onClick={handleSubmit}>
         Submit
       </Button>

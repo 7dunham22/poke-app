@@ -50,10 +50,10 @@ export const getPokemon = (name) => {
 export const getNames = () => {
   return async (dispatch) => {
     try {
-      const { results } = await axios.get(
+      const { data } = await axios.get(
         'https://pokeapi.co/api/v2/pokemon?limit=2000'
       );
-      const names = results.map((result) => result.name);
+      const names = data.results.map((result) => result.name);
       dispatch(_getNames(names));
     } catch (error) {
       console.log('Failed to retrieve pokemon names');
