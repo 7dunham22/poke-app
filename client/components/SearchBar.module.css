@@ -1,0 +1,14 @@
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#searchbar {
+  max-width: 800px;
+  min-width: 200px;
+}
+
+#container > * {
+  margin: 5px;
+}
