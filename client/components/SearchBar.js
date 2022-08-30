@@ -23,17 +23,10 @@ export const SearchBar = () => {
 
   return (
     <div id={styles.container}>
-      {/* <Form.Control
-        id={styles.searchbar}
-        size="lg"
-        type="text"
-        placeholder="Search for a Pokemon"
-        value={newPokemon}
-        onChange={handleUpdate}
-      /> */}
       <Form>
         <Typeahead
           id="basic-typeahead-single"
+          className={styles.typeahead}
           labelKey="name"
           onChange={setSingleSelections}
           options={pokemonNames}
