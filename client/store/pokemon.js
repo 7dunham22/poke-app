@@ -10,7 +10,10 @@ const _getPokemon = (pokemon) => ({
 export const getPokemon = (name) => {
   return async (dispatch) => {
     try {
-      const { data } = axios.get(`https://pokeapi.co/api/v2/${name}`);
+      name = name.toLowerCase();
+      const { data } = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${name}`
+      );
       dispatch(_getPokemon(data));
     } catch (error) {
       console.log(error);
