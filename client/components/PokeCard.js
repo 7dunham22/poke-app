@@ -25,7 +25,7 @@ const PokeCard = () => {
         <Card id={styles.container}>
           <Card.Img variant="top" src={image} />
           <Card.Body>
-            <Card.Title>{name}</Card.Title>
+            <Card.Title>{name[0].toUpperCase() + name.slice(1)}</Card.Title>
             <Card.Text>
               Abilities:{' '}
               <ul>
