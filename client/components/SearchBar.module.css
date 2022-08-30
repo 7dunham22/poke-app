@@ -1,13 +1,12 @@
 #container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-#searchbar {
-  max-width: 75%;
-}
-
-#container > * {
-  margin: 5px;
+.typeahead {
+  max-width: 90%;
+  offset: auto;
 }
