@@ -14,7 +14,6 @@ export const SearchBar = () => {
   };
 
   const handleSubmit = () => {
-    console.log('HERE');
     dispatch(getPokemon(newPokemon));
     setNewPokemon('');
   };
@@ -26,6 +25,7 @@ export const SearchBar = () => {
         size="lg"
         type="text"
         placeholder="Search for a Pokemon"
+        value={newPokemon}
         onChange={handleUpdate}
       />
       <Button variant="primary" type="submit" onClick={handleSubmit}>

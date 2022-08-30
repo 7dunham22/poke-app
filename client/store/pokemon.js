@@ -14,7 +14,13 @@ export const getPokemon = (name) => {
       const { data } = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${name}`
       );
-      dispatch(_getPokemon(data));
+      dispatch(
+        _getPokemon({
+          name: data.name,
+          abilities: data.abilities,
+          image: data.sprites.front_default,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
