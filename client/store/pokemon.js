@@ -22,12 +22,18 @@ export const getPokemon = (name) => {
         })
       );
     } catch (error) {
-      console.log(error);
+      dispatch(
+        _getPokemon({ name: undefined, abilities: undefined, image: undefined })
+      );
     }
   };
 };
 
-const initialState = {};
+const initialState = {
+  name: '',
+  abilities: [],
+  image: '',
+};
 
 const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {

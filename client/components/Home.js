@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 import styles from './Home.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchBar from './SearchBar';
+import PokeCard from './PokeCard';
 
 /**
  * COMPONENT
@@ -15,6 +16,7 @@ export const Home = () => {
         <Card.Body>WELCOME TO THE POKE APP</Card.Body>
       </Card>
       <SearchBar />
+      <PokeCard />
     </div>
   );
 };
