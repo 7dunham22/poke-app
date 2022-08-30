@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './PokeCard.module.css';
 import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import Spinner from 'react-bootstrap/Spinner';
 
 const PokeCard = () => {
   const name = useSelector((state) => state.pokemon.name);
   const abilities = useSelector((state) => state.pokemon.abilities);
   const image = useSelector((state) => state.pokemon.image);
+  const isLoading = useSelector((state) => state.pokemon.loading);
   let foundResult = name !== undefined;
   const [currName, setName] = useState(name);
   const didSearch = useRef(false);
@@ -17,10 +19,16 @@ const PokeCard = () => {
     setName(name);
   }, [name]);
 
+  useEffect(() => {
+    setName(name);
+  }, [isLoading]);
+
   return (
     <div>
       {!didSearch.current ? (
         <div></div>
+      ) : isLoading ? (
+        <Spinner animation="border" />
       ) : foundResult ? (
         <Card id={styles.container}>
           <Card.Img variant="top" src={image} />
