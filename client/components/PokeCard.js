@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import styles from './PokeCard.module.css';
 import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
@@ -21,7 +22,7 @@ const PokeCard = () => {
       {!didSearch.current ? (
         <div></div>
       ) : foundResult ? (
-        <Card>
+        <Card id={styles.container}>
           <Card.Img variant="top" src={image} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>

@@ -1,5 +1,7 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
+  color: #012a36;
+  background: linear-gradient(#f5f5f5, #f5f5f5);
 }
 
 a {
