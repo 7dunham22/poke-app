@@ -72,6 +72,7 @@ const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POKEMON:
       return {
+        ...state,
         ...action.pokemon,
         isLoading: false,
         isFetched: true,
