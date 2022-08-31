@@ -16,14 +16,15 @@ export const SearchBar = () => {
     dispatch(getNames());
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(getPokemon(singleSelections[0]));
     setSingleSelections([]);
   };
 
   return (
     <div id={styles.container}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Typeahead
           id="basic-typeahead-single"
           className={styles.typeahead}
@@ -33,10 +34,10 @@ export const SearchBar = () => {
           placeholder="Search for a Pokemon"
           selected={singleSelections}
         />
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
     </div>
   );
 };
