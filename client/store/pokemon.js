@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_POKEMON = 'GET_POKEMON';
 const SET_LOADING_STATE = 'SET_LOADING_STATE';
 const GET_NAMES = 'GET_NAMES';
+const SET_ERROR_STATE = 'SET_ERROR_STATE';
 
 const _getPokemon = (pokemon) => ({
   type: GET_POKEMON,
@@ -18,6 +19,10 @@ const _getNames = (names) => ({
   names,
 });
 
+const _setErrorState = () => ({
+  type: SET_ERROR_STATE,
+});
+
 export const getPokemon = (name) => {
   return async (dispatch) => {
     try {
@@ -31,18 +36,10 @@ export const getPokemon = (name) => {
           name: data.name,
           abilities: data.abilities,
           image: data.sprites.front_default,
-          loading: false,
         })
       );
     } catch (error) {
-      dispatch(
-        _getPokemon({
-          name: undefined,
-          abilities: undefined,
-          image: undefined,
-          loading: false,
-        })
-      );
+      dispatch(_setErrorState());
     }
   };
 };
@@ -65,18 +62,27 @@ const initialState = {
   name: '',
   abilities: [],
   image: '',
-  loading: false,
+  isLoading: false,
+  isFetched: false,
+  isError: false,
   names: [],
 };
 
 const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POKEMON:
-      return { ...action.pokemon, names: state.names };
+      return {
+        ...action.pokemon,
+        isLoading: false,
+        isFetched: true,
+        isError: false,
+      };
     case SET_LOADING_STATE:
-      return { ...state, loading: true };
+      return { ...state, isLoading: true, isFetched: false, isError: false };
     case GET_NAMES:
       return { ...state, names: action.names };
+    case SET_ERROR_STATE:
+      return { ...state, isLoading: false, isFetched: true, isError: true };
     default:
       return state;
   }
