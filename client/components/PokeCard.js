@@ -9,13 +9,12 @@ const PokeCard = () => {
   const abilities = useSelector((state) => state.pokemon.abilities);
   const image = useSelector((state) => state.pokemon.image);
   const isLoading = useSelector((state) => state.pokemon.loading);
-  let foundResult = name !== undefined;
+  const foundResult = name !== undefined;
   const [currName, setName] = useState(name);
   const didSearch = useRef(false);
 
   useEffect(() => {
     didSearch.current = true;
-    foundResult = name !== undefined;
     setName(name);
   }, [name]);
 
