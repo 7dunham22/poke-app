@@ -35,7 +35,7 @@ export const SearchBar = () => {
         />
       </Form>
       <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+        Search
       </Button>
     </div>
   );
